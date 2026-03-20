@@ -16,11 +16,10 @@ const FilterBar = ({
           <button
             key={type}
             onClick={() => setFilterType(type)}
-            className={`flex-1 lg:flex-none px-6 py-2.5 rounded-xl text-sm font-bold transition-all duration-300 z-10 ${
-              filterType === type
+            className={`flex-1 lg:flex-none px-6 py-2.5 rounded-xl text-sm font-bold transition-all duration-300 z-10 ${filterType === type
                 ? 'bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white shadow-[0_0_15px_rgba(139,92,246,0.5)]'
                 : 'text-slate-400 hover:text-white hover:bg-slate-800/50'
-            }`}
+              }`}
           >
             {type}
           </button>
@@ -31,11 +30,10 @@ const FilterBar = ({
         {/* Toggle Show <75% Attendance */}
         <button
           onClick={() => setShowLowAttendance(!showLowAttendance)}
-          className={`flex items-center justify-center gap-2.5 px-6 py-3 rounded-2xl text-sm font-bold transition-all duration-300 border w-full sm:w-auto overflow-hidden relative group ${
-            showLowAttendance
+          className={`flex items-center justify-center gap-2.5 px-6 py-3 rounded-2xl text-sm font-bold transition-all duration-300 border w-full sm:w-auto overflow-hidden relative group ${showLowAttendance
               ? 'border-rose-500/50 bg-rose-500/10 text-rose-400 shadow-[0_0_20px_rgba(244,63,94,0.2)]'
               : 'border-white/5 bg-slate-950/50 text-slate-400 hover:bg-slate-800 hover:text-white hover:border-white/10 shadow-lg'
-          }`}
+            }`}
         >
           {showLowAttendance && <div className="absolute inset-0 bg-rose-500/10 group-hover:bg-rose-500/20 transition-colors"></div>}
           <div className={`w-2.5 h-2.5 rounded-full relative z-10 shadow-sm ${showLowAttendance ? 'bg-rose-500 shadow-[0_0_8px_rgba(244,63,94,1)] animate-pulse' : 'bg-slate-600'}`}></div>
@@ -49,8 +47,8 @@ const FilterBar = ({
         >
           Sort
           <div className="bg-slate-800 border border-slate-700 rounded-full p-1 group-hover:bg-slate-600 transition-colors shadow-inner">
-            <svg 
-              className={`w-3.5 h-3.5 transform transition-transform duration-500 text-slate-300 group-hover:text-white ${sortOrder === 'asc' ? 'rotate-180' : 'rotate-0'}`} 
+            <svg
+              className={`w-3.5 h-3.5 transform transition-transform duration-500 text-slate-300 group-hover:text-white ${sortOrder === 'asc' ? 'rotate-180' : 'rotate-0'}`}
               fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}
             >
               <path strokeLinecap="round" strokeLinejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />

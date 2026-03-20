@@ -51,7 +51,7 @@ function App() {
       <div className="absolute top-[-15%] left-[-10%] w-[50%] h-[50%] rounded-full bg-violet-600/20 blur-[120px] pointer-events-none mix-blend-screen" />
       <div className="absolute bottom-[-15%] right-[-10%] w-[50%] h-[50%] rounded-full bg-cyan-600/20 blur-[120px] pointer-events-none mix-blend-screen" />
       <div className="absolute top-[30%] right-[20%] w-[30%] h-[30%] rounded-full bg-fuchsia-600/15 blur-[100px] pointer-events-none mix-blend-screen" />
-      
+
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 relative z-10">
         <header className="mb-10 flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div>
@@ -69,7 +69,7 @@ function App() {
               Monitor, track, and manage student attendance records with real-time insights.
             </p>
           </div>
-          
+
           {!loading && (
             <div className="flex gap-4">
               <div className="bg-slate-900/60 backdrop-blur-xl border border-white/5 shadow-xl shadow-black/50 rounded-2xl p-5 min-w-[130px] relative overflow-hidden group">
@@ -103,13 +103,13 @@ function App() {
               <div className="h-14 bg-slate-800/50 rounded-2xl w-full"></div>
               {[1, 2, 3, 4, 5].map(i => (
                 <div key={i} className="flex gap-6 items-center">
-                   <div className="h-12 w-12 bg-slate-800/50 rounded-2xl"></div>
-                   <div className="flex flex-col gap-3 w-1/3">
-                      <div className="h-5 bg-slate-800/50 rounded-md w-3/4"></div>
-                      <div className="h-3 bg-slate-800/50 rounded-md w-1/2"></div>
-                   </div>
-                   <div className="h-4 bg-slate-800/50 rounded-md w-1/5 ml-auto"></div>
-                   <div className="h-8 bg-slate-800/50 rounded-xl w-24"></div>
+                  <div className="h-12 w-12 bg-slate-800/50 rounded-2xl"></div>
+                  <div className="flex flex-col gap-3 w-1/3">
+                    <div className="h-5 bg-slate-800/50 rounded-md w-3/4"></div>
+                    <div className="h-3 bg-slate-800/50 rounded-md w-1/2"></div>
+                  </div>
+                  <div className="h-4 bg-slate-800/50 rounded-md w-1/5 ml-auto"></div>
+                  <div className="h-8 bg-slate-800/50 rounded-xl w-24"></div>
                 </div>
               ))}
             </div>

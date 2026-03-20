@@ -58,26 +58,23 @@ const StudentTable = ({ students, selectedStudent, setSelectedStudent }) => {
                   {/* Primary Row */}
                   <tr
                     onClick={() => handleRowClick(student)}
-                    className={`cursor-pointer transition-all duration-300 group relative ${
-                      isSelected 
-                        ? 'bg-violet-900/10 hover:bg-violet-900/20' 
+                    className={`cursor-pointer transition-all duration-300 group relative ${isSelected
+                        ? 'bg-violet-900/10 hover:bg-violet-900/20'
                         : 'hover:bg-slate-800/40'
-                    }`}
+                      }`}
                   >
                     <td className="px-8 py-5 relative">
-                      <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-violet-500 to-cyan-500 transform origin-left transition-transform duration-300 shadow-[0_0_10px_rgba(139,92,246,0.8)]" 
-                          style={{ scale: isSelected ? '1 1' : '0 1' }} />
+                      <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-violet-500 to-cyan-500 transform origin-left transition-transform duration-300 shadow-[0_0_10px_rgba(139,92,246,0.8)]"
+                        style={{ scale: isSelected ? '1 1' : '0 1' }} />
                       <div className="flex items-center gap-5">
-                        <div className={`w-12 h-12 rounded-2xl flex items-center justify-center font-bold text-lg transition-all duration-300 group-hover:scale-110 group-hover:-rotate-3 ${
-                          isSelected ? 'ring-2 ring-violet-400/50 ring-offset-2 ring-offset-slate-900 bg-gradient-to-br from-violet-500 to-fuchsia-600 text-white shadow-[0_0_20px_rgba(139,92,246,0.5)]' : avatarStyle
-                        }`}>
+                        <div className={`w-12 h-12 rounded-2xl flex items-center justify-center font-bold text-lg transition-all duration-300 group-hover:scale-110 group-hover:-rotate-3 ${isSelected ? 'ring-2 ring-violet-400/50 ring-offset-2 ring-offset-slate-900 bg-gradient-to-br from-violet-500 to-fuchsia-600 text-white shadow-[0_0_20px_rgba(139,92,246,0.5)]' : avatarStyle
+                          }`}>
                           {student.name.charAt(0)}
                         </div>
-                        
+
                         <div className="flex flex-col">
-                          <span className={`text-base font-bold transition-colors ${
-                            isSelected ? 'text-white' : 'text-slate-200 group-hover:text-white'
-                          }`}>
+                          <span className={`text-base font-bold transition-colors ${isSelected ? 'text-white' : 'text-slate-200 group-hover:text-white'
+                            }`}>
                             {student.name}
                           </span>
                           <span className="text-xs text-slate-500 font-medium mt-0.5 group-hover:text-slate-400 transition-colors">
@@ -89,21 +86,19 @@ const StudentTable = ({ students, selectedStudent, setSelectedStudent }) => {
 
                     <td className="px-8 py-5">
                       <div className="flex items-center gap-5 max-w-[200px]">
-                        <span className={`text-base font-black w-14 text-right ${
-                          isLowAttendance ? 'text-rose-400 drop-shadow-[0_0_8px_rgba(244,63,94,0.3)]' : 'text-cyan-400 drop-shadow-[0_0_8px_rgba(34,211,238,0.3)]'
-                        }`}>
+                        <span className={`text-base font-black w-14 text-right ${isLowAttendance ? 'text-rose-400 drop-shadow-[0_0_8px_rgba(244,63,94,0.3)]' : 'text-cyan-400 drop-shadow-[0_0_8px_rgba(34,211,238,0.3)]'
+                          }`}>
                           {student.attendance}%
                         </span>
                         <div className="flex-1 h-2 bg-slate-950 rounded-full overflow-hidden border border-white/5 relative shadow-inner">
-                          <div 
-                            className={`absolute top-0 left-0 h-full rounded-full transition-all duration-1000 ease-out ${
-                              isLowAttendance 
-                                ? 'bg-gradient-to-r from-rose-500 to-orange-500 shadow-[0_0_10px_rgba(244,63,94,0.8)]' 
+                          <div
+                            className={`absolute top-0 left-0 h-full rounded-full transition-all duration-1000 ease-out ${isLowAttendance
+                                ? 'bg-gradient-to-r from-rose-500 to-orange-500 shadow-[0_0_10px_rgba(244,63,94,0.8)]'
                                 : 'bg-gradient-to-r from-cyan-400 to-blue-500 shadow-[0_0_10px_rgba(34,211,238,0.8)]'
-                            }`}
+                              }`}
                             style={{ width: `${student.attendance}%` }}
                           >
-                             <div className="absolute top-0 right-0 bottom-0 left-0 bg-white/30 w-full animate-pulse blur-[1px]"></div>
+                            <div className="absolute top-0 right-0 bottom-0 left-0 bg-white/30 w-full animate-pulse blur-[1px]"></div>
                           </div>
                         </div>
                       </div>
@@ -111,15 +106,13 @@ const StudentTable = ({ students, selectedStudent, setSelectedStudent }) => {
 
                     <td className="px-8 py-5 text-right">
                       <span
-                        className={`inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-all duration-300 border ${
-                          student.status === 'Present'
+                        className={`inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-all duration-300 border ${student.status === 'Present'
                             ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20 shadow-[0_0_15px_rgba(16,185,129,0.15)] group-hover:bg-emerald-500/20'
                             : 'bg-rose-500/10 text-rose-400 border-rose-500/20 shadow-[0_0_15px_rgba(244,63,94,0.15)] group-hover:bg-rose-500/20'
-                        }`}
+                          }`}
                       >
-                        <span className={`w-2 h-2 rounded-full ${
-                          student.status === 'Present' ? 'bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.8)]' : 'bg-rose-400 shadow-[0_0_8px_rgba(251,113,133,0.8)]'
-                        } ${student.status === 'Present' && 'animate-pulse'}`} />
+                        <span className={`w-2 h-2 rounded-full ${student.status === 'Present' ? 'bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.8)]' : 'bg-rose-400 shadow-[0_0_8px_rgba(251,113,133,0.8)]'
+                          } ${student.status === 'Present' && 'animate-pulse'}`} />
                         {student.status}
                       </span>
                     </td>
@@ -128,13 +121,12 @@ const StudentTable = ({ students, selectedStudent, setSelectedStudent }) => {
                   {/* Secondary Expansion Row */}
                   <tr>
                     <td colSpan="3" className="p-0 border-0">
-                      <div className={`transition-all duration-500 ease-in-out overflow-hidden ${
-                         isSelected ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'
-                      }`}>
+                      <div className={`transition-all duration-500 ease-in-out overflow-hidden ${isSelected ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'
+                        }`}>
                         <div className="px-8 py-5 mx-6 mb-6 mt-2 bg-slate-950/50 rounded-2xl border border-white/5 shadow-inner backdrop-blur-sm relative">
                           {/* Inner soft glow */}
                           <div className="absolute inset-0 bg-gradient-to-br from-violet-500/5 via-transparent to-cyan-500/5 pointer-events-none rounded-2xl"></div>
-                          
+
                           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 relative z-10">
                             {/* Contact Info */}
                             <div className="flex flex-col gap-2">
@@ -173,9 +165,9 @@ const StudentTable = ({ students, selectedStudent, setSelectedStudent }) => {
                               </h4>
                               <div className="text-sm font-medium text-slate-300 mt-1">
                                 <p className="flex items-start gap-2 leading-relaxed">
-                                  <span className="text-slate-500 text-base mt-0.5">📍</span> 
+                                  <span className="text-slate-500 text-base mt-0.5">📍</span>
                                   <span>
-                                    {student.address?.suite} {student.address?.street}<br/>
+                                    {student.address?.suite} {student.address?.street}<br />
                                     <span className="text-slate-400">{student.address?.city}, {student.address?.zipcode}</span>
                                   </span>
                                 </p>
