@@ -7,11 +7,14 @@ const FilterBar = ({
   setShowLowAttendance,
   sortOrder,
   setSortOrder,
+  searchQuery,
+  setSearchQuery,
 }) => {
   return (
-    <div className="bg-slate-900/60 backdrop-blur-xl border border-white/5 shadow-2xl shadow-black/50 rounded-3xl p-3 mb-8 flex flex-col lg:flex-row justify-between items-center gap-4 transition-all relative z-20">
+    <div className="bg-slate-900/60 backdrop-blur-xl border border-white/5 shadow-2xl shadow-black/50 rounded-3xl p-4 mb-8 flex flex-col xl:flex-row justify-between items-center gap-4 transition-all relative z-20">
       {/* Segmented Control for Filters */}
-      <div className="flex w-full lg:w-auto p-1.5 bg-slate-950/80 rounded-2xl relative shadow-inner shadow-black/20">
+      <div className="flex flex-col sm:flex-row w-full xl:w-auto gap-4 items-center">
+        <div className="flex w-full sm:w-auto p-1.5 bg-slate-950/80 rounded-2xl relative shadow-inner shadow-black/20">
         {['All', 'Present', 'Absent'].map((type) => (
           <button
             key={type}
@@ -24,9 +27,26 @@ const FilterBar = ({
             {type}
           </button>
         ))}
+        </div>
+        
+        {/* Search Input */}
+        <div className="relative w-full sm:w-64">
+          <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+            <svg className="h-4 w-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+          </div>
+          <input
+            type="text"
+            placeholder="Search students..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="w-full bg-slate-950/80 border border-white/10 text-white text-sm rounded-xl pl-10 pr-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-violet-500/50 focus:border-violet-500/50 transition-all placeholder-slate-500 shadow-inner"
+          />
+        </div>
       </div>
 
-      <div className="flex flex-col sm:flex-row w-full lg:w-auto gap-3">
+      <div className="flex flex-col sm:flex-row w-full xl:w-auto gap-3">
         {/* Toggle Show <75% Attendance */}
         <button
           onClick={() => setShowLowAttendance(!showLowAttendance)}
@@ -45,7 +65,7 @@ const FilterBar = ({
           onClick={() => setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc')}
           className="flex items-center justify-center gap-2 px-6 py-3 bg-slate-950/50 text-slate-300 border border-white/5 text-sm font-bold rounded-2xl hover:bg-slate-800 hover:text-white hover:border-white/10 transition-all duration-300 w-full sm:w-auto shadow-lg group"
         >
-          Sort
+          {sortOrder === 'asc' ? 'Low to High' : 'High to Low'}
           <div className="bg-slate-800 border border-slate-700 rounded-full p-1 group-hover:bg-slate-600 transition-colors shadow-inner">
             <svg
               className={`w-3.5 h-3.5 transform transition-transform duration-500 text-slate-300 group-hover:text-white ${sortOrder === 'asc' ? 'rotate-180' : 'rotate-0'}`}

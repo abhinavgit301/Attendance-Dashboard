@@ -9,6 +9,7 @@ function App() {
   const [showLowAttendance, setShowLowAttendance] = useState(false);
   const [loading, setLoading] = useState(true);
   const [sortOrder, setSortOrder] = useState('desc');
+  const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
     setTimeout(() => {
@@ -30,7 +31,20 @@ function App() {
     }, 800);
   }, []);
 
+  const toggleStudentStatus = (studentId) => {
+    setStudents((prevStudents) =>
+      prevStudents.map((s) =>
+        s.id === studentId
+          ? { ...s, status: s.status === 'Present' ? 'Absent' : 'Present' }
+          : s
+      )
+    );
+  };
+
   const displayedStudents = students.filter((student) => {
+    if (searchQuery && !student.name.toLowerCase().includes(searchQuery.toLowerCase())) {
+      return false;
+    }
     if (filterType !== 'All' && student.status !== filterType) {
       return false;
     }
@@ -74,7 +88,7 @@ function App() {
             <div className="flex gap-4">
               <div className="bg-slate-900/60 backdrop-blur-xl border border-white/5 shadow-xl shadow-black/50 rounded-2xl p-5 min-w-[130px] relative overflow-hidden group">
                 <div className="absolute inset-0 bg-gradient-to-br from-violet-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <p className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-1 relative z-10">Total Limit</p>
+                <p className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-1 relative z-10">Total Students</p>
                 <p className="text-4xl font-black text-white relative z-10">{students.length}</p>
               </div>
               <div className="bg-slate-900/60 backdrop-blur-xl border border-white/5 shadow-xl shadow-black/50 rounded-2xl p-5 min-w-[130px] relative overflow-hidden group">
@@ -95,6 +109,8 @@ function App() {
           setShowLowAttendance={setShowLowAttendance}
           sortOrder={sortOrder}
           setSortOrder={setSortOrder}
+          searchQuery={searchQuery}
+          setSearchQuery={setSearchQuery}
         />
 
         {loading ? (
@@ -119,6 +135,7 @@ function App() {
             students={displayedStudents}
             selectedStudent={selectedStudent}
             setSelectedStudent={setSelectedStudent}
+            toggleStudentStatus={toggleStudentStatus}
           />
         )}
       </div>

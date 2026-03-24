@@ -1,6 +1,6 @@
 import React from 'react';
 
-const StudentTable = ({ students, selectedStudent, setSelectedStudent }) => {
+const StudentTable = ({ students, selectedStudent, setSelectedStudent, toggleStudentStatus }) => {
   if (students.length === 0) {
     return (
       <div className="bg-slate-900/60 backdrop-blur-xl border border-white/5 shadow-2xl shadow-black/50 rounded-3xl p-16 flex flex-col items-center justify-center text-center transition-all duration-500">
@@ -105,16 +105,20 @@ const StudentTable = ({ students, selectedStudent, setSelectedStudent }) => {
                     </td>
 
                     <td className="px-8 py-5 text-right">
-                      <span
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          toggleStudentStatus(student.id);
+                        }}
                         className={`inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-all duration-300 border ${student.status === 'Present'
-                            ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20 shadow-[0_0_15px_rgba(16,185,129,0.15)] group-hover:bg-emerald-500/20'
-                            : 'bg-rose-500/10 text-rose-400 border-rose-500/20 shadow-[0_0_15px_rgba(244,63,94,0.15)] group-hover:bg-rose-500/20'
+                            ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20 shadow-[0_0_15px_rgba(16,185,129,0.15)] hover:bg-emerald-500/30'
+                            : 'bg-rose-500/10 text-rose-400 border-rose-500/20 shadow-[0_0_15px_rgba(244,63,94,0.15)] hover:bg-rose-500/30'
                           }`}
                       >
                         <span className={`w-2 h-2 rounded-full ${student.status === 'Present' ? 'bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.8)]' : 'bg-rose-400 shadow-[0_0_8px_rgba(251,113,133,0.8)]'
                           } ${student.status === 'Present' && 'animate-pulse'}`} />
                         {student.status}
-                      </span>
+                      </button>
                     </td>
                   </tr>
 
